@@ -1,12 +1,17 @@
-export default function Navbar({ page, setPage }) {
+import { Link } from "react-router-dom";
+
+export default function Navbar() {
   return (
-    <nav className="bg-blue-600 text-white p-4 flex gap-6">
-      <button onClick={() => setPage("employees")} className="font-semibold">
+    <nav className="bg-blue-600 px-6 py-4 flex gap-6">
+      <Link to="/" className="text-white hover:text-white/80">
+        Home
+      </Link>
+      <Link to="/employees" className="text-white hover:text-white/80">
         Employees
-      </button>
-      <button onClick={() => setPage("attendance")} className="font-semibold">
+      </Link>
+      <Link to="/attendance" className="text-white hover:text-white/80">
         Attendance
-      </button>
+      </Link>
     </nav>
   );
 }
