@@ -2,6 +2,7 @@ const BASE_URL = "https://hrms-1-11m3.onrender.com";
 
 export async function getEmployees() {
   const res = await fetch(`${BASE_URL}/employees`);
+  if (!res.ok) throw new Error("Failed to fetch employees");
   return res.json();
 }
 
@@ -11,19 +12,15 @@ export async function addEmployee(data) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail || "Failed to add employee");
-  }
-
+  if (!res.ok) throw new Error("Failed to add employee");
   return res.json();
 }
 
-export async function deleteEmployee(employeeId) {
-  await fetch(`${BASE_URL}/employees/${employeeId}`, {
+export async function deleteEmployee(id) {
+  const res = await fetch(`${BASE_URL}/employees/${id}`, {
     method: "DELETE",
   });
+  if (!res.ok) throw new Error("Failed to delete employee");
 }
 
 export async function markAttendance(data) {
@@ -32,16 +29,12 @@ export async function markAttendance(data) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.detail);
-  }
-
+  if (!res.ok) throw new Error("Failed to mark attendance");
   return res.json();
 }
 
 export async function getAttendance(employeeId) {
   const res = await fetch(`${BASE_URL}/attendance/${employeeId}`);
+  if (!res.ok) throw new Error("Failed to fetch attendance");
   return res.json();
 }
