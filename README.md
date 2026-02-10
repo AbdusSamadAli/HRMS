@@ -100,5 +100,5 @@ Database-level constraints prevent duplicate and inconsistent data
 
 CORS configured for frontend-backend communication
 
-Frontend URL : https://hrms-chi-two.vercel.app/
+Frontend URL : https://hrms-l165.vercel.app/
 Backend URL : https://hrms-1-11m3.onrender.com/
