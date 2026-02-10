@@ -1,33 +1,46 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { markAttendance, getAttendance } from "../api/api";
 
 export default function Attendance() {
-  const [employeeId, setEmployeeId] = useState("");
+  
+  const [employeeId, setEmployeeId] = useState(
+    localStorage.getItem("employeeId") || ""
+  );
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("Present");
   const [records, setRecords] = useState([]);
   const [error, setError] = useState("");
 
+  async function loadAttendance() {
+    try {
+      const data = await getAttendance(employeeId);
+      setRecords(data);
+    } catch (e) {
+      setError("Failed to load attendance");
+    }
+  }
+
   async function submit() {
     setError("");
     try {
-      await markAttendance({ employee_id: employeeId, date, status });
-      loadAttendance();
+      await markAttendance({
+        employee_id: employeeId,
+        date,
+        status,
+      });
+      await loadAttendance();
     } catch (e) {
       setError(e.message);
     }
   }
-
-  async function loadAttendance() {
-    const data = await getAttendance(employeeId);
-    setRecords(data);
-  }
-
+  
   useEffect(() => {
-  if (employeeId) {
-    loadAttendance();
-  }
-}, [employeeId]);
+    if (employeeId) {
+      loadAttendance();
+    } else {
+      setRecords([]);
+    }
+  }, [employeeId]);
 
   return (
     <div className="max-w-5xl mx-auto p-6">
@@ -47,14 +60,19 @@ export default function Attendance() {
             className="border rounded p-2"
             placeholder="Employee ID"
             value={employeeId}
-            onChange={(e) => setEmployeeId(e.target.value)}
+            onChange={(e) => {
+              setEmployeeId(e.target.value);
+              localStorage.setItem("employeeId", e.target.value);
+            }}
           />
+
           <input
             type="date"
             className="border rounded p-2"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
+
           <select
             className="border rounded p-2"
             value={status}
@@ -63,9 +81,11 @@ export default function Attendance() {
             <option>Present</option>
             <option>Absent</option>
           </select>
+
           <button
             onClick={submit}
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded px-4"
+            disabled={!employeeId || !date}
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded px-4 disabled:opacity-50"
           >
             Mark
           </button>
