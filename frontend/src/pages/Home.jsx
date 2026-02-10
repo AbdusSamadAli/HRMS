@@ -9,9 +9,6 @@ export default function Home() {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Efficiently manage your workforce with our comprehensive employee management and attendance tracking system
           </p>
-          <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-            Get Started
-          </button>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -32,7 +29,7 @@ export default function Home() {
                 <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-gray-700">Add, edit, and remove employee records</span>
+                <span className="text-gray-700">Add and remove employee records</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-blue-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
@@ -53,9 +50,6 @@ export default function Home() {
                 <span className="text-gray-700">Search and filter employee database</span>
               </li>
             </ul>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-              Manage Employees
-            </button>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-8">
@@ -68,7 +62,7 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-gray-900 ml-4">Attendance Tracking</h2>
             </div>
             <p className="text-gray-600 mb-6">
-              Real-time attendance monitoring with automated tracking, leave management, and comprehensive reporting
+              Real-time attendance monitoring with automated tracking, leave management and comprehensive reporting
             </p>
             <ul className="space-y-3 mb-6">
               <li className="flex items-start">
@@ -78,9 +72,6 @@ export default function Home() {
                 <span className="text-gray-700">Leave and absence management</span>
               </li>
             </ul>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-              Track Attendance
-            </button>
           </div>
         </div>
       </div>
