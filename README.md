@@ -44,7 +44,7 @@ The system simulates a **basic internal HR tool** with a focus on simplicity, co
 
 ---
 
-## ▶️ Steps to Run the Project Locally
+## Steps to Run the Project Locally
 
 ### Clone the repository
 ```bash
